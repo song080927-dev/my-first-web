@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>나의 첫 웹 앱</title>
+<style>
+    body{
+        background-color: #F4F8FB;
+        color: #3A4A5A;
+        line-height: 1.7;
+        margin: 0;
+    }
+    header {
+        background-color: #6FA8DC;
+        color: white;
+        text-align: center;
+        padding: 50px 0;
+    }
+    nav {
+        text-align: center;
+        padding: 15px;
+        background-color: #DCEAF7;
+    }
+    nav a {
+        margin: 0 15px;
+        text-decoration: none;
+        font-weight: bold;
+        color:#2C5C85
+    }
+    img{
+        display: block;
+        margin: 30px auto;
+        width: 250px;
+        border-radius: 50%;
+        border: 10px solid white;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    header,footer{
+        padding: 50px 0;
+    }
+    main {
+        width: 80%;
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 30px;
+        background-color: white;
+        border: 1px solid #ddd;
+    }
+    .my-button{
+        display: inline-block;
+        padding: 15px 30px;
+        background-color: #3f72af;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        margin-top: 20px;
+        transition: 0.3s;
+        
+    }
+        .my-button:hover {
+            background-color: #112D4E;
+            transform: translate(-3px);
+        }
+    
+</style>
+
+</head>
+<body>
+    <header>
+        <h1>바이브 코딩 개발자 송지우</h1>
+    </header>
+    <nav>
+        <a href="https://www.youtube.com/@jocoding"target="_blank">1.유튜버:조코딩</a> 
+        <a href="https://gjja-h.goegh.kr/gjja-h/main.do"target="_blank">2.광주중앙고등학교 홈페이지</a>
+    </nav>
+    <main>
+        <img src="./image/eraser.png" alt="내 사진" width="300">
+<p>
+    <ul>
+    <li>취미 : 게임하기/노래듣기/코딩하기</li>
+    <li>장래희망 : 1인개발자</li>
+    <li>좋아하는 음식 : 김치전,김치볶음밥</li>
+    </ul>
+</p>
+ <a href="#"class="my-button" onclick="button()">나에 대해 더 알아보기</a>
+    </main>
+    <footer>
+ <p> &copy; 2026 송지우 | 문의: nuroplay1758@gmail.com </p>  
+    </footer>
+
+    <script>
+function button(){
+    alert("송지우입니다.")
+    console.log("버튼을 클릭했습니다!");
+    
+}
+    </script>
+
+</body>
+</html>
