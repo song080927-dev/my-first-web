@@ -90,3 +90,40 @@
     border: 1px dashed #4caf50;
     text-align: center;
 }
+
+#order-area {
+    margin-top: 60px;
+    padding: 30px;
+    background-color: #f4f9f4;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+}
+form {
+    display:  flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width:  500px;
+}
+
+.input-group{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+  .order{
+        display: inline-block;
+        padding: 15px 30px;
+        background-color: #5b60c5;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        margin-top: 20px;
+        transition: 0.3s;
+        
+    }
+        .order:hover {
+            background-color: #112D4E;
+            transform: translate(-3px);
+        }
