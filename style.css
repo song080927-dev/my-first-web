@@ -109,21 +109,70 @@ form {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    
 }
 
 
-  .order{
-        display: inline-block;
-        padding: 15px 30px;
-        background-color: #5b60c5;
-        color: white;
-        text-decoration: none;
-        border-radius: 10px;
-        margin-top: 20px;
-        transition: 0.3s;
-        
-    }
-        .order:hover {
-            background-color: #112D4E;
-            transform: translate(-3px);
-        }
+.input-row{
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.input-row .input-group{
+    flex: 1;
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+    outline: none;
+    border-color: blue;
+    box-shadow: 0 0 8px rgba(76,175,80,0.2);
+}
+
+.input-group input,
+.input-group textarea{
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+} 
+select{
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: white;
+}
+.order-btn{
+    background-color: #CE9FFC; /*주문하기 버튼 배경 색*/
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.1s;
+}
+.order-btn:hover{
+    background-color: #7367F0;
+    transform: translateY(2px);
+}
+.order-btn:active{
+    transform:  translateY(5px);
+}
+
+.receipt-box{
+    margin-top: 30px;
+    padding: 20px;
+    color: #FEB692;
+    border: 2px dashed #EA5455;
+    background-color: #ffffff;
+    border-radius: 10px;
+    display: none;
+}
+.receipt-box h3 {
+    color: #EA5455;
+    border-bottom: 1px solid #eee;
+    padding-bottom:  10px;
+}

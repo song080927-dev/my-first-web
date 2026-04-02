@@ -59,11 +59,18 @@ code_blocks
  <section id="order-area">
 <hr>
 <h2>📦온라인 주문하기</h2>
-<form>
-    <div class="input-group">
-<label>주문자 성함</label>
-<input type="text" placeholder="실명을 입력하세요">
+<form action="">
+<div class="input-row">
+<div class="input-group">
+    <label>주문자 성함</label>
+    <input type="text" id="userName" placeholder="실명을 입력하세요">
     </div>
+    <div class="input-group">
+        <label>연락처</label>
+        <input type="text" id="userPhone"placeholder="010-0000-0000">
+    </div>
+</div>
+
 <div class="input-group">
     <label>배송 방식 선택</label>
     <select>
@@ -72,17 +79,63 @@ code_blocks
         <option>광주 로컬푸드 매장 픽업 (무료)</option>
     </select>
 </div>
+<div class="input-group">
+<label>배송주소</label>
+<input type="text" id="adress" placeholder="배송지를 적어주세요!">
+</div>
 
 <div class="input-group">
     <label>배송 메시지</label>
-    <textarea placeholder="부재 시 문 앞에 놓아주세요"></textarea>
+    <textarea placeholder="부재 시 문 앞에 놓아주세요(선택)"></textarea>
 </div>
-<button class="order" type="submit">지금 바로 주문 완료</button>
+<button type="button" class="order-btn" onclick="processOrder()">지금 바로 주문 완료</button>
+<div id="receipt" class="receipt-box">
+</div>
+
 </form>
  </section>
     </main>
     <footer>
  <p> &copy; 2026 송지우 | 문의: nuroplay1758@gmail.com </p>  
     </footer>
+
+    <script>
+
+        function processOrder() {
+            let name =document.getElementById('userName').value;
+            let phone = document.getElementById('userPhone').value;
+            let adress =document.getElementById('adress').value;
+            let message = document.querySelector("textarea").value;
+            let delivery = document.querySelector("select").value;
+
+             if (name=== ""){
+                     alert("이름을 입력해주세요.")
+                     return;
+                    }
+                else if(phone === ""){
+                    alert("연락처를 입력해주세요.")
+                    return;
+                }
+                else if (adress === ""){
+                    alert("배송주소를 입력해주세요.")
+                    return;
+                }
+
+            let receipt=document.getElementById('receipt');
+
+            receipt.innerHTML=`
+            <h3> 주문 확인 영수증</h3>
+            <p><strong>주문자:</strong> ${name}님</p>
+            <p><strong>연락처:</strong> ${phone}</p>
+            <p><strong>배송방식:</strong> ${delivery}</p>
+            <p><strong>배송주소:</strong> ${adress}</p>
+            <p><strong>요청사항:</strong> ${message || "없음"}</p>
+            <hr>
+            <p style="text-align:center;">주문해주셔서 감사합니다!</p>
+        `;
+
+        receipt.style.display="block";
+        }
+    </script>
 </body>
 </html>
