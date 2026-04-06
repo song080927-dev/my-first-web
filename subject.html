@@ -73,10 +73,10 @@ code_blocks
 
 <div class="input-group">
     <label>배송 방식 선택</label>
-    <select>
-        <option>일반 택배 (3,000원)</option>
-        <option>신선 새벽 배송 (5,000원)</option>
-        <option>광주 로컬푸드 매장 픽업 (무료)</option>
+    <select id="deliveryFee">
+        <option value="3000">일반 택배 (3,000원)</option>
+        <option value="5000">신선 새벽 배송 (5,000원)</option>
+        <option value="0">광주 로컬푸드 매장 픽업 (무료)</option>
     </select>
 </div>
 <div class="input-group">
@@ -85,7 +85,7 @@ code_blocks
 </div>
 
 <div class="input-group">
-    <label>배송 메시지</label>
+    <label>요청사항</label>
     <textarea placeholder="부재 시 문 앞에 놓아주세요(선택)"></textarea>
 </div>
 <button type="button" class="order-btn" onclick="processOrder()">지금 바로 주문 완료</button>
@@ -107,6 +107,11 @@ code_blocks
             let adress =document.getElementById('adress').value;
             let message = document.querySelector("textarea").value;
             let delivery = document.querySelector("select").value;
+            let feeValue = document.getElementById("deliveryFee").value;
+            let deliveryFee = Number(feeValue);
+
+            let productPrice = 15000;
+            let totalPrice = productPrice + deliveryFee;
 
              if (name=== ""){
                      alert("이름을 입력해주세요.")
@@ -131,11 +136,17 @@ code_blocks
             <p><strong>배송주소:</strong> ${adress}</p>
             <p><strong>요청사항:</strong> ${message || "없음"}</p>
             <hr>
+            <p style="font-size: 1.2em"><strong>총 결제 금액:
+                <span style="color:black;"> ${totalPrice.toLocaleString()}원</span>
+                </strong><p>
+            <hr>
             <p style="text-align:center;">주문해주셔서 감사합니다!</p>
         `;
 
         receipt.style.display="block";
         }
+
+    
     </script>
 </body>
 </html>
