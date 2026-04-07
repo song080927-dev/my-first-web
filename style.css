@@ -165,14 +165,18 @@ select{
 .receipt-box{
     margin-top: 30px;
     padding: 20px;
-    color: #FEB692;
+    color: #66BB6A;
     border: 2px dashed #EA5455;
     background-color: #ffffff;
     border-radius: 10px;
     display: none;
 }
-.receipt-box h3 {
+.receipt-box h2 {
     color: #EA5455;
     border-bottom: 1px solid #eee;
     padding-bottom:  10px;
+}
+.receipt-box h3 {
+    color: #2E7D32;
+   
 }

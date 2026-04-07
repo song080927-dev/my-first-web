@@ -71,6 +71,22 @@ code_blocks
     </div>
 </div>
 
+<div class="input-row">
+<div class="input-group">
+<label for="unitWeight">구매 단위 선택</label>
+<select id="unitWeight">
+<option value="15000">유기농 방울토마토 1kg (15,000원)</option>
+<option value="40000">유기농 방울토마토 1kg (40,000원)</option>
+<option value="60000">유기농 방울토마토 1kg (60,000원)</option>
+</select>
+</div>
+
+<div class="input-group">
+<label for="quantity">주문 수량 (박스)</label>
+<input type="number" id="quantity" value="1" min="1" max="10">
+</div>
+</div>
+
 <div class="input-group">
     <label>배송 방식 선택</label>
     <select id="deliveryFee">
@@ -79,6 +95,7 @@ code_blocks
         <option value="0">광주 로컬푸드 매장 픽업 (무료)</option>
     </select>
 </div>
+
 <div class="input-group">
 <label>배송주소</label>
 <input type="text" id="adress" placeholder="배송지를 적어주세요!">
@@ -106,12 +123,27 @@ code_blocks
             let phone = document.getElementById('userPhone').value;
             let adress =document.getElementById('adress').value;
             let message = document.querySelector("textarea").value;
-            let delivery = document.querySelector("select").value;
-            let feeValue = document.getElementById("deliveryFee").value;
-            let deliveryFee = Number(feeValue);
+            let deliverySelect = document.getElementById("deliveryFee");
+            let delivery = deliverySelect.options[deliverySelect.selectedIndex].text;
+            let quantity = Number(document.getElementById("quantity").value);
+            let deliveryFee = Number(document.getElementById("deliveryFee").value);
 
-            let productPrice = 15000;
-            let totalPrice = productPrice + deliveryFee;
+
+            let unitSelect = document.getElementById("unitWeight");
+     
+           let productName = unitSelect.options[unitSelect.selectedIndex].text;
+
+
+            let productPrise=Number(unitSelect.value);
+
+         let basePrise=productPrise * quantity;
+
+if(basePrise>=30000){
+    deliveryFee = 0; //3만원 이상 구매시 배송비 무료
+}
+
+let totalPrice=basePrise + deliveryFee;
+let dateString = new Date().toLocaleString();
 
              if (name=== ""){
                      alert("이름을 입력해주세요.")
@@ -129,13 +161,26 @@ code_blocks
             let receipt=document.getElementById('receipt');
 
             receipt.innerHTML=`
-            <h3> 주문 확인 영수증</h3>
+            <h2> 주문 확인 영수증</h2>
+            <p style="color: gray; font-size: 0.8em">주문 시각: ${dateString}</p>
+            <hr>
+            <h3> [주문자 정보]</h3>
             <p><strong>주문자:</strong> ${name}님</p>
-            <p><strong>연락처:</strong> ${phone}</p>
-            <p><strong>배송방식:</strong> ${delivery}</p>
+              <p><strong>연락처:</strong> ${phone}</p>
+              <hr>
+              <h3>[상품 정보]</h3>
+            <p><strong>주문 상품:</strong> ${productName}</p>
+            <p><strong>주문 수량:</strong> ${quantity} 박스</p>
+            <hr>
+            <h3>[배송 정보]</h3>
+                   <p><strong>배송방식:</strong> ${delivery}</p>
+            <p><strong>배송비:</strong>
+                ${deliveryFee=== 0 ? "무료배송": deliveryFee.toLocaleString()+"원"}
+                </p>
             <p><strong>배송주소:</strong> ${adress}</p>
             <p><strong>요청사항:</strong> ${message || "없음"}</p>
             <hr>
+            <h3>[결제 정보]</h3>
             <p style="font-size: 1.2em"><strong>총 결제 금액:
                 <span style="color:black;"> ${totalPrice.toLocaleString()}원</span>
                 </strong><p>
