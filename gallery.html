@@ -24,26 +24,34 @@ code_blocks
     <nav>
             <a href="index.html">🏠홈으로</a>
     <a href="subject.html">📈전공 탐구</a>
-     <a href="gallery.html">🖼️갤러리</a>
-   
+   <a href="gallery.html">🖼️갤러리</a>
     </nav>
     <main>
-        <img src="./image/eraser.png" alt="내 사진" width="300">
-<p>
-    <ul>
-    <li>취미 : 게임하기/노래듣기/코딩하기</li>
-    <li>장래희망 : 1인개발자</li>
-    <li>좋아하는 음식 : 김치전/김치볶음밥</li>
-    <li>좋아하는 게임 :발로란트/배틀그라운드 </li>  
-    </ul>
-</p>
- <a href=""class="my-button"><span class="material-symbols-outlined">
-inventory
-</span> 나에 대해 더 알아보기</a>
+<div class="display-box">
+    <img id="targetImg" src="./image/crop1.jpg"style="width: 100%; max-width:500px;"/>
+    <p id="tagetDesc">4월 7일: 방울토마토 첫 수확!</p>
+</div>
+
+<div class="thumb-list">
+    <img src="./image/crop1.jpg"onclick="show('./image/crop1.jpg','4월 7일:사과 첫 수확!')"/>
+     <img src="./image/crop2.jpg"onclick="show('./image/crop2.jpg','4월 8일:맛나는 사과 따는중!')"/>
+     <img src="./image/crop3.jpg"onclick="show('./image/crop3.jpg','4월 9일:모든 사과 수확 완료!!')"/>
+</div>
+
+
+
     </main>
-    <footer>
+ <footer>
  <p> &copy; 2026 송지우 | 문의: nuroplay1758@gmail.com </p>  
     </footer>
-
 </body>
+
+<script>
+function show(imgPath, text){
+    document.getElementById("targetImg").src=imgPath;
+        document.getElementById("tagetDesc").innerText=text;
+
+}
+
+</script>
 </html>
