@@ -27,6 +27,12 @@ code_blocks
  <a href="gallery.html">🖼️갤러리</a>
     </nav>
     <main>
+        <div id="login-box" style="text-align: center; margin: 50px;">
+<h2>시스템 인증이 필요합니다</h2>
+<input type="password"id="userPw" placeholder="암호4자리"/>
+<button onclick="checkLogin()">입장하기</button>
+        </div>
+        <div id="secret-area" style="display: none;">
  <section class="agriculture-portfolio">
 <article class="crop-item">
 
@@ -111,6 +117,8 @@ code_blocks
 
 </form>
  </section>
+        </div>
+
     </main>
     <footer>
  <p> &copy; 2026 송지우 | 문의: nuroplay1758@gmail.com </p>  
@@ -191,7 +199,18 @@ let dateString = new Date().toLocaleString();
         receipt.style.display="block";
         }
 
+    function checkLogin(){
+        let pw =document.getElementById("userPw").value;
+        if(pw==="1234"){
+        alert("인증에 성공하였습니다.");
+
+        document.getElementById("login-box").style.display="none";
+        document.getElementById("secret-area").style.display="block";
     
+    } else{
+alert("암호가 일치하지 않습니다. 다시 시도하십시오.")        
+    }
+}
     </script>
 </body>
 </html>
