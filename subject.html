@@ -29,12 +29,13 @@ code_blocks
     <main>
         <h1 id="welcome" style="text-align: center;">안녕하세요 환영합니다!</h1>
         <div id="login-box" style="text-align: center; margin: 50px; border: 1px solid ; border-radius: 30px; background-color: #6FA8DC; color: white;margin-top: 20px;
- ">
-<h2>시스템 인증이 필요합니다</h2>
-<input type="password"id="userPw" placeholder="암호4자리"/>
-<button onclick="checkLogin()">입장하기</button>
+ "> <h2>시스템 인증이 필요합니다</h2>
+ <input type="text" id="userName" placeholder="사용자 이름"/><br>
+ <input type="password" id="userPw" placeholder="암호 입력"/><br>
+ <button onclick="checkLogin()">입장하기</button>
         </div>
         <div id="secret-area" style="display: none;">
+            <h3 style="color: #2e7d32;"><span id="user-display"></span>님, 반갑습니다!</h3>
  <section class="agriculture-portfolio">
 <article class="crop-item">
 
@@ -119,6 +120,14 @@ code_blocks
 
 </form>
  </section>
+    <div id="settings" style="margin-top: 30px; padding: 20px; border: 1px solid #ddd; background-color: #fff;">
+        <h4> 시스템 보안 설정</h4>
+        <p style="font-size: 0.9em; color: #666;">보안을 위해 정기적으로 비밀번호를 변경해 주세요.</p>
+        <input type="password" id="newPw" placeholder="새 비밀번호 입력"/>
+        <button onclick="changePassword()">비밀번호 변경</button>
+        <button onclick="logout()">로그아웃</button>
+    </div>
+    
         </div>
 
     </main>
@@ -201,19 +210,53 @@ let dateString = new Date().toLocaleString();
         receipt.style.display="block";
         }
 
-    function checkLogin(){
-        let pw =document.getElementById("userPw").value;
-        if(pw==="1234"){
-        alert("인증에 성공하였습니다.");
+ function checkLogin(){
+    let name = document.getElementById("userName").value;
+    let pw = document.getElementById("userPw").value;
+
+    let currentPw = localStorage.getItem("userPassword") || "1234";
+
+    if(pw === currentPw && name !== ""){
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("savedName", name);
+        localStorage.setItem("userPassword", currentPw);
+
+        alert(name + "님, 로그인 성공!");
 
         document.getElementById("login-box").style.display="none";
         document.getElementById("welcome").style.display="none";
         document.getElementById("secret-area").style.display="block";
-    
-    } else{
-alert("암호가 일치하지 않습니다. 다시 시도하십시오.")        
+        document.getElementById("user-display").innerText=name;
+
+    } else {
+        alert("이름 또는 비밀번호가 틀렸습니다.");
     }
 }
+   window.onload=function(){
+    let isLoggeIn=localStorage.getItem("isLoggedIn");
+    let svaedName=localStorage.getItem("savedName");
+
+    if(isLoggeIn ==="true"){
+        document.getElementById("login-box").style.display="none";
+        document.getElementById("secret-area").style.display="block";
+        document.getElementById("welcome").style.display="none";
+        document.getElementById("user-display").innerText=svaedName;
+    }
+   }
+
+   function changePassword(){
+    let newPw=document.getElementById("newPw").value;
+    if(newPw.length<4){ alert("암호는 4자리 이상이어야 합니다."); return;}
+    localStorage.setItem("userPassword",newPw);
+    alert("비밀번호가 변경되었습니다.");
+   }
+   function logout(){
+    if(confirm("로그아웃 하시겟습니까?")){
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("savedName");
+        location.href="index.html";
+    }
+   }
     </script>
 </body>
 </html>
