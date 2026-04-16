@@ -30,7 +30,7 @@ code_blocks
         <h1 id="welcome" style="text-align: center;">안녕하세요 환영합니다!</h1>
         <div id="login-box" style="text-align: center; margin: 50px; border: 1px solid ; border-radius: 30px; background-color: #6FA8DC; color: white;margin-top: 20px;
  "> <h2>시스템 인증이 필요합니다</h2>
- <input type="text" id="userName" placeholder="사용자 이름"/><br>
+ <input type="text" id="username" placeholder="사용자 이름"/><br>
  <input type="password" id="userPw" placeholder="암호 입력"/><br>
  <button onclick="checkLogin()">입장하기</button>
         </div>
@@ -211,7 +211,7 @@ let dateString = new Date().toLocaleString();
         }
 
  function checkLogin(){
-    let name = document.getElementById("userName").value;
+    let name = document.getElementById("username").value;
     let pw = document.getElementById("userPw").value;
 
     let currentPw = localStorage.getItem("userPassword") || "1234";
