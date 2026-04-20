@@ -135,6 +135,7 @@ form {
     border-radius: 8px;
     border: 1px solid #ddd;
 } 
+
 select{
     width: 100%;
     padding: 10px;
@@ -155,6 +156,21 @@ select{
     transition: 0.1s;
 }
 .order-btn:hover{
+    background-color: #7367F0;
+    transform: translateY(2px);
+}
+.login{
+    background-color: plum; /*주문하기 버튼 배경 색*/
+    color: white;
+    border: none;
+    padding: 3px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.1s;
+}
+.login:hover{
     background-color: #7367F0;
     transform: translateY(2px);
 }
