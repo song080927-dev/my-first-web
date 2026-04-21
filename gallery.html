@@ -30,9 +30,9 @@ code_blocks
          <h1 id="welcome" style="text-align: center;">안녕하세요 환영합니다!</h1>
         <div id="login-box" style="text-align: center; margin: 50px; border: 1px solid ; border-radius: 30px; background-color: #6FA8DC; color: white;margin-top: 20px;
  "> <h2>시스템 인증이 필요합니다</h2>
- <input type="text" id="username" placeholder="사용자 이름"/><br>
- <input type="password" id="userPw" placeholder="암호 입력"/><br>
- <button onclick="checkLogin()">입장하기</button>
+ <input type="text" id="username" class="login" placeholder="사용자 이름"/><br>
+ <input type="password" id="userPw" class="login" placeholder="암호 입력"/><br>
+ <button class="login_button" onclick="checkLogin()">입장하기</button>
         </div>
         <div id="secret-area" style="display: none;">
 <h3 style="color: red;"><span id="user-display"></span>님, 반갑습니다!</h3>
@@ -59,8 +59,8 @@ code_blocks
         <h4> 시스템 보안 설정</h4>
         <p style="font-size: 0.9em; color: #666;">보안을 위해 정기적으로 비밀번호를 변경해 주세요.</p>
         <input type="password" id="newPw" placeholder="새 비밀번호 입력"/>
-        <button class="login" onclick="changePassword()">비밀번호 변경</button>
-        <button class="login" onclick="logout()">로그아웃</button>
+        <button class="Login" onclick="changePassword()">비밀번호 변경</button>
+        <button class="Login" onclick="logout()">로그아웃</button>
     </div>
         </div>
 
